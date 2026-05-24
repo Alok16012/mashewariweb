@@ -226,8 +226,8 @@ export default function HeroSection() {
 
         {/* Stats */}
         <div style={{
-          display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16,
-          marginTop: 48, animation: "fadeUp 0.5s 0.4s ease forwards", opacity: 0,
+          display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: 12,
+          marginTop: 40, animation: "fadeUp 0.5s 0.4s ease forwards", opacity: 0,
         }}>
           {stats.map((s) => (
             <div key={s.label} style={{

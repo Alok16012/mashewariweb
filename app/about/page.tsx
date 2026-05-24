@@ -105,7 +105,7 @@ export default function AboutPage() {
             <span style={{ color: "#fff", fontSize: 13 }}>About Us</span>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+          <div className="about-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
             <div>
               <span style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: 20, padding: "5px 16px", fontSize: 12, fontWeight: 700, display: "inline-block", marginBottom: 16, backdropFilter: "blur(8px)" }}>
                 Est. 2014 · Saguna More, Patna
@@ -156,7 +156,7 @@ export default function AboutPage() {
       {/* ── Who We Are ──────────────────────────────────────────── */}
       <section style={{ background: "#f7f8fa", padding: "64px 0" }}>
         <div className="mx-auto px-4" style={{ maxWidth: 1200 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
+          <div className="about-who-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
             <div>
               <span style={{ fontSize: 12, fontWeight: 700, color: "var(--primary)", textTransform: "uppercase", letterSpacing: "1px", display: "block", marginBottom: 10 }}>Who We Are</span>
               <h2 style={{ fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 800, color: "var(--text-dark)", lineHeight: 1.25, marginBottom: 18 }}>
@@ -436,7 +436,9 @@ export default function AboutPage() {
 
       <style jsx>{`
         @media (max-width: 768px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-grid    { grid-template-columns: 1fr !important; }
+          .about-hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+          .about-who-grid  { grid-template-columns: 1fr !important; gap: 28px !important; }
         }
       `}</style>
     </>

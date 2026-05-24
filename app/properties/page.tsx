@@ -208,24 +208,24 @@ function PropertiesContent() {
 
       <div className="mx-auto px-4 py-8" style={{ maxWidth: 1200 }}>
         {/* Filter row */}
-        <div style={{ background: "#fff", borderRadius: 10, padding: "14px 20px", marginBottom: 24, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", border: "1px solid var(--border)" }}>
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", flex: 1 }}>
+        <div className="filter-bar" style={{ background: "#fff", borderRadius: 10, padding: "14px 16px", marginBottom: 24, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", border: "1px solid var(--border)" }}>
+          <div className="filter-pills" style={{ display: "flex", gap: 6, flexWrap: "wrap", flex: 1, minWidth: 0 }}>
             {typeFilters.map((t) => (
-              <button key={t} onClick={() => { setTypeFilter(t); updateParams({ type: t === "All" ? "" : t }); }}
-                style={{ padding: "6px 14px", borderRadius: 20, fontSize: 13, fontWeight: 600, border: "1.5px solid", cursor: "pointer", transition: "all 0.15s", borderColor: typeFilter === t ? "var(--primary)" : "var(--border)", background: typeFilter === t ? "var(--primary)" : "#fff", color: typeFilter === t ? "#fff" : "var(--text-medium)" }}>
+              <button key={t} onClick={() => { setTypeFilter(t); updateParams({ type: t === "All" ? "" : t, intent: "" }); }}
+                style={{ padding: "6px 14px", borderRadius: 20, fontSize: 13, fontWeight: 600, border: "1.5px solid", cursor: "pointer", transition: "all 0.15s", borderColor: typeFilter === t ? "var(--primary)" : "var(--border)", background: typeFilter === t ? "var(--primary)" : "#fff", color: typeFilter === t ? "#fff" : "var(--text-medium)", whiteSpace: "nowrap" }}>
                 {t}
               </button>
             ))}
           </div>
-          <div style={{ display: "flex", gap: 10 }}>
+          <div className="filter-selects" style={{ display: "flex", gap: 8, flexShrink: 0 }}>
             {[{ val: statusFilter, opts: statusFilters, key: "status", setter: setStatusFilter },
               { val: sortBy,       opts: sortOptions,   key: "sort",   setter: setSortBy }].map(({ val, opts, key, setter }) => (
               <div key={key} style={{ position: "relative" }}>
                 <select value={val} onChange={(e) => { setter(e.target.value); updateParams({ [key]: e.target.value }); }}
-                  style={{ appearance: "none", border: "1.5px solid var(--border)", borderRadius: 6, padding: "7px 32px 7px 12px", fontSize: 13, fontWeight: 600, cursor: "pointer", color: "var(--text-medium)", outline: "none", fontFamily: "inherit" }}>
+                  style={{ appearance: "none", border: "1.5px solid var(--border)", borderRadius: 6, padding: "7px 28px 7px 10px", fontSize: 12, fontWeight: 600, cursor: "pointer", color: "var(--text-medium)", outline: "none", fontFamily: "inherit", maxWidth: 140 }}>
                   {opts.map((o) => <option key={o}>{o}</option>)}
                 </select>
-                <ChevronDown size={12} style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--text-light)" }} />
+                <ChevronDown size={12} style={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--text-light)" }} />
               </div>
             ))}
           </div>
@@ -275,6 +275,15 @@ function PropertiesContent() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .filter-bar      { flex-direction: column; align-items: stretch !important; padding: 12px !important; }
+          .filter-pills    { flex: none !important; }
+          .filter-selects  { flex-direction: row; width: 100%; }
+          .filter-selects select { flex: 1; max-width: none !important; }
+        }
+      `}</style>
     </>
   );
 }

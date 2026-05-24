@@ -24,13 +24,14 @@ const areas = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#111827", color: "#e5e7eb" }}>
+    <footer style={{ background: "#111827", color: "#e5e7eb", overflowX: "hidden", width: "100%" }}>
       {/* Main footer */}
       <div
-        className="mx-auto px-4 py-12"
-        style={{ maxWidth: 1200 }}
+        className="mx-auto py-12"
+        style={{ maxWidth: 1200, paddingLeft: 16, paddingRight: 16, width: "100%", boxSizing: "border-box" }}
       >
         <div
+          className="footer-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
@@ -293,14 +294,17 @@ export default function Footer() {
         }}
       >
         <div
-          className="mx-auto px-4"
           style={{
             maxWidth: 1200,
+            margin: "0 auto",
+            paddingLeft: 16,
+            paddingRight: 16,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             flexWrap: "wrap",
             gap: 10,
+            boxSizing: "border-box",
           }}
         >
           <p style={{ fontSize: 12, color: "#6b7280" }}>
@@ -330,6 +334,19 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+        }
+        @media (max-width: 900px) and (min-width: 641px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }
