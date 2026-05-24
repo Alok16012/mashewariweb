@@ -1,6 +1,7 @@
 "use client";
 
-import { Building2, Phone, MapPin, Mail, Star } from "lucide-react";
+import Image from "next/image";
+import { Phone, MapPin, Mail, Star } from "lucide-react";
 
 const quickLinks = [
   { label: "Buy Property", href: "#properties" },
@@ -41,20 +42,13 @@ export default function Footer() {
           {/* Brand */}
           <div style={{ gridColumn: "span 1" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <div
-                style={{
-                  background: "var(--primary)",
-                  borderRadius: 8,
-                  width: 40,
-                  height: 40,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <Building2 size={22} color="#fff" />
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Maheshwari Realcon Pvt. Ltd."
+                width={52}
+                height={52}
+                style={{ objectFit: "contain", flexShrink: 0, background: "#fff", borderRadius: 8, padding: 4 }}
+              />
               <div>
                 <div
                   style={{

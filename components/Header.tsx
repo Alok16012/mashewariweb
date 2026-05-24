@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Menu, X, Building2, Search, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Phone, Menu, X, Search, MapPin } from "lucide-react";
 
 const navLinks = [
   { label: "Buy",        href: "/buy" },
@@ -92,10 +93,15 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ background: "var(--primary)", borderRadius: 8, width: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Building2 size={22} color="#fff" />
-              </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Image
+                src="/logo.png"
+                alt="Maheshwari Realcon Pvt. Ltd."
+                width={46}
+                height={46}
+                style={{ objectFit: "contain", display: "block" }}
+                priority
+              />
               <div>
                 <div style={{ fontSize: 15, fontWeight: 800, color: "var(--primary)", lineHeight: 1.1, letterSpacing: "-0.3px" }}>Maheshwari</div>
                 <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-light)", textTransform: "uppercase", letterSpacing: "0.5px" }}>Realcon Pvt. Ltd.</div>
